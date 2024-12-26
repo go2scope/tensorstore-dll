@@ -1,13 +1,26 @@
 cmake_minimum_required(VERSION 3.24)
+
+# Set Python path before everything else
+set(Python3_ROOT_DIR "C:/Python310" CACHE PATH "")
+set(Python3_EXECUTABLE "C:/Python310/python.exe" CACHE FILEPATH "")
+
+# Disable all optional TensorStore features before project declaration
+set(TENSORSTORE_ENABLE_PROTO OFF CACHE BOOL "")
+set(TENSORSTORE_BUILD_PROTOBUF OFF CACHE BOOL "")
+set(TENSORSTORE_PYTHON_BINDINGS OFF CACHE BOOL "")
+set(TENSORSTORE_EXAMPLES OFF CACHE BOOL "")
+set(TENSORSTORE_TESTS OFF CACHE BOOL "")
+set(TENSORSTORE_USE_GOOGLE_CLOUD OFF CACHE BOOL "")
+set(TENSORSTORE_ENABLE_S3 OFF CACHE BOOL "")
+set(TENSORSTORE_ENABLE_HTTP_TRANSPORT OFF CACHE BOOL "")
+set(BUILD_TESTING OFF CACHE BOOL "")
+set(TENSORSTORE_USE_INTERNAL_ABSEIL ON CACHE BOOL "")
+
 project(tensorstore_dll
     VERSION 1.0.0
     DESCRIPTION "TensorStore DLL wrapper for Zarr operations"
     LANGUAGES CXX
 )
-
-# Disable protobuf generation
-set(TENSORSTORE_ENABLE_PROTO OFF CACHE BOOL "Disable protobuf in TensorStore")
-set(TENSORSTORE_BUILD_PROTOBUF OFF CACHE BOOL "Disable building protobuf")
 
 # Force Visual Studio settings
 set(CMAKE_GENERATOR "Visual Studio 16 2019" CACHE INTERNAL "" FORCE)
@@ -49,7 +62,7 @@ add_compile_options(
     /wd4275  # non dll-interface class used as base
 )
 
-# Add external dependencies
+# Add TensorStore
 add_subdirectory(external/tensorstore EXCLUDE_FROM_ALL)
 
 # Configure version header
