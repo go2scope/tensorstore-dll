@@ -1,12 +1,10 @@
 # Define library sources
 set(TENSORSTORE_DLL_SOURCES
     tensorstore_dll.cpp
-    error_handling.cpp
 )
 
 set(TENSORSTORE_DLL_HEADERS
     ${CMAKE_SOURCE_DIR}/include/tensorstore_dll/tensorstore_dll.h
-    error_handling.h
 )
 
 # Define the library target

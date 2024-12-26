@@ -5,6 +5,10 @@ project(tensorstore_dll
     LANGUAGES CXX
 )
 
+# Disable protobuf generation
+set(TENSORSTORE_ENABLE_PROTO OFF CACHE BOOL "Disable protobuf in TensorStore")
+set(TENSORSTORE_BUILD_PROTOBUF OFF CACHE BOOL "Disable building protobuf")
+
 # Force Visual Studio settings
 set(CMAKE_GENERATOR "Visual Studio 16 2019" CACHE INTERNAL "" FORCE)
 set(CMAKE_GENERATOR_PLATFORM "x64" CACHE INTERNAL "" FORCE)
