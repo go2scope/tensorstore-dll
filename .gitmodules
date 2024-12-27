@@ -2,3 +2,6 @@
 	path = external/tensorstore
 	url = https://github.com/google/tensorstore.git
     branch = master
+[submodule "third_party/tensorstore"]
+	path = third_party/tensorstore
+	url = https://github.com/google/tensorstore.git
